@@ -13,7 +13,7 @@
 Ky projekt implementon një metodë për mbrojtjen e fjalëkalimeve duke përdorur algoritmin PBKDF2 me hash-in SHA-1 në Python. PBKDF2 (Password-Based Key Derivation Function 2) përdoret për të gjeneruar çelësa të sigurt dhe është një praktikë standarde për sigurinë e fjalëkalimeve, duke përfshirë salting dhe hashing.
 
 ### Karakteristikat
-✅ Hashimi i fjalëkalimeve me PBKDF2-SHA1. <br>
+✅ Hashimi i fjalëkalimeve me **PBKDF2-SHA1.** <br>
 🔒 Implementimi i një salt të rastësishëm për çdo fjalëkalim. <br>
 🛡️ Verifikimi i fjalëkalimeve të ruajtura me hash. <br>
 
@@ -25,7 +25,7 @@ Projekti përdor **Tkinter** për të ofruar një ndërfaqe të thjeshtë dhe t�
 
 ### Teknologjitë
 🐍 Python <br>
-🔒 **hashlib** për hashing dhe os për gjenerimin e salt <br>
+🔒 **hashlib** për hashing dhe **os** për gjenerimin e salt <br>
 🖥️ Tkinter për ndërtimin e ndërfaqes grafike (GUI) <br>
 
 ### Instalimi
