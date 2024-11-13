@@ -4,8 +4,14 @@ import hashlib
 import os
 import base64
 import re
-
+from tkinter import PhotoImage
+    
 def hash_password(password):
+    password = entry_password.get()
+    if not password:
+        messagebox.showwarning("Kujdes", "Ju lutem shkruani një fjalëkalim përpara se të hash-ohet.")
+        return
+    
     if not validate_password(password):
         return
     salt = os.urandom(16)
@@ -16,10 +22,20 @@ def hash_password(password):
     hash_var.set(hash_b64)
     messagebox.showinfo("Sukses", "Fjalëkalimi u hash-ua me sukses!")
 
-def verify_password():    
+def verify_password():
     password = entry_verify.get()
-    salt = base64.b64decode(salt_var.get())
-    original_hash = base64.b64decode(hash_var.get())
+    salt_b64 = salt_var.get()
+    hash_b64 = hash_var.get()
+
+    if not password:
+        messagebox.showwarning("Kujdes", "Ju lutem shkruani një fjalëkalim përpara se të verifikohet.")
+        return
+    if not salt_b64 or not hash_b64:
+        messagebox.showwarning("Kujdes", "Nuk ka të dhëna hash ose salt për verifikim.")
+        return
+
+    salt = base64.b64decode(salt_b64)
+    original_hash = base64.b64decode(hash_b64)
     new_hash = hashlib.pbkdf2_hmac('sha1', password.encode(), salt, 100000)
     if new_hash == original_hash:
         messagebox.showinfo("Sukses", "Fjalëkalimi është korrekt!")
@@ -28,7 +44,7 @@ def verify_password():
 
 def validate_password(password):
     if len(password) < 8:
-        messagebox.showerror("Gabim", "Fjalëkalimi duhet të jetë të paktën 8 karaktere i gjatë!")
+        messagebox.showerror("Gabim", "Fjalëkalimi duhet të ketë të paktën 8 karaktere!")
         return False
     if not re.search(r"[A-Z]", password):
         messagebox.showerror("Gabim", "Fjalëkalimi duhet të përmbajë të paktën një shkronjë të madhe!")
@@ -46,43 +62,51 @@ def validate_password(password):
 
 def check_password_strength(event):
     password = entry_password.get()
+    if not password:
+        label_strength.config(text="", foreground="black") 
+        return
+    
     strength = "Dobët"
+    color = "red"
     if len(password) >= 8:
         strength = "Mesatar"
+        color = "blue"
     if len(password) >= 12 and re.search(r"[A-Z]", password) and re.search(r"[0-9]", password) and re.search(r"[!@#$%^&*(),.?\":{}|<>]", password):
         strength = "I fortë"
-    label_strength.config(text=f"Fuqia: {strength}")
+        color = "green"
+    label_strength.config(text=strength, foreground=color)
 
 def clear():
     entry_password.delete(0, tk.END)
     salt_var.set("")
     hash_var.set("")
     entry_verify.delete(0, tk.END)
+    label_strength.config(text="")
 
 root = tk.Tk()
 root.title("Mbrojtja e Fjalëkalimeve me PBKDF2-SHA1")
-root.geometry("650x400")
+root.geometry("500x200")
 root.resizable(False, False)
 
 salt_var = tk.StringVar()
 hash_var = tk.StringVar()
     
 tk.Label(root, text="Fjalëkalimi:").grid(row=0, column=0, sticky='w', padx=10, pady=10)
-entry_password = tk.Entry(root, show="*", width=30)
+entry_password = tk.Entry(root, show="*", width=35)
 entry_password.grid(row=0, column=1, padx=10, pady=10)
 entry_password.bind("<KeyRelease>", check_password_strength)
 btn_hash = tk.Button(root, text="Hash Fjalëkalimin", command=lambda: hash_password(entry_password.get()))
 btn_hash.grid(row=0, column=2, padx=10, pady=10, sticky='w')
 
-label_strength = tk.Label(root, text="Fuqia: ")
-label_strength.grid(row=1, column=0, sticky='w', padx=10, pady=10)
+label_strength = tk.Label(root)
+label_strength.grid(row=1, column=1, sticky='w', padx=5, pady=0)
 
 tk.Label(root, text="Salt:").grid(row=2, column=0, sticky='w', padx=10, pady=10)
-entry_salt = tk.Entry(root, textvariable=salt_var, state='readonly', width=30)
+entry_salt = tk.Entry(root, textvariable=salt_var, state='readonly', width=35)
 entry_salt.grid(row=2, column=1, padx=10, pady=10)
 
 tk.Label(root, text="Hash:").grid(row=3, column=0, sticky='w', padx=10, pady=10)
-entry_hash = tk.Entry(root, textvariable=hash_var, state='readonly', width=30)
+entry_hash = tk.Entry(root, textvariable=hash_var, state='readonly', width=35)
 entry_hash.grid(row=3, column=1, padx=10, pady=10)
 
 tk.Label(root, text="Verifiko Fjalëkalimin:").grid(row=4, column=0, padx=10, pady=10)
@@ -93,6 +117,6 @@ btn_verify = tk.Button(root, text="Verifiko", command=verify_password)
 btn_verify.grid(row=4, column=2, padx=(10, 2), pady=10, sticky='w')
 
 btn_clear = tk.Button(root, text="Pastro", command=clear)
-btn_clear.grid(row=3, column=2, padx=(2, 10), pady=10, sticky='e')
+btn_clear.grid(row=4, column=2, padx=(2, 10), pady=10, sticky='e')
 
 root.mainloop()
