@@ -6,6 +6,8 @@ import base64
 import re
 
 def hash_password(password):
+    if not validate_password(password):
+        return
     salt = os.urandom(16)
     hashed = hashlib.pbkdf2_hmac('sha1', password.encode(), salt, 100000)
     salt_b64 = base64.b64encode(salt).decode()
@@ -24,6 +26,24 @@ def verify_password():
     else:
         messagebox.showerror("Gabim", "Fjalëkalimi nuk përputhet!")
 
+def validate_password(password):
+    if len(password) < 8:
+        messagebox.showerror("Gabim", "Fjalëkalimi duhet të jetë të paktën 8 karaktere i gjatë!")
+        return False
+    if not re.search(r"[A-Z]", password):
+        messagebox.showerror("Gabim", "Fjalëkalimi duhet të përmbajë të paktën një shkronjë të madhe!")
+        return False
+    if not re.search(r"[a-z]", password):
+        messagebox.showerror("Gabim", "Fjalëkalimi duhet të përmbajë të paktën një shkronjë të vogël!")
+        return False
+    if not re.search(r"[0-9]", password):
+        messagebox.showerror("Gabim", "Fjalëkalimi duhet të përmbajë të paktën një numër!")
+        return False
+    if not re.search(r"[!@#$%^&*(),.?\":{}|<>]", password):
+        messagebox.showerror("Gabim", "Fjalëkalimi duhet të përmbajë të paktën një karakter special!")
+        return False
+    return True
+
 def check_password_strength(event):
     password = entry_password.get()
     strength = "Dobët"
@@ -32,6 +52,12 @@ def check_password_strength(event):
     if len(password) >= 12 and re.search(r"[A-Z]", password) and re.search(r"[0-9]", password) and re.search(r"[!@#$%^&*(),.?\":{}|<>]", password):
         strength = "I fortë"
     label_strength.config(text=f"Fuqia: {strength}")
+
+def clear():
+    entry_password.delete(0, tk.END)
+    salt_var.set("")
+    hash_var.set("")
+    entry_verify.delete(0, tk.END)
 
 root = tk.Tk()
 root.title("Mbrojtja e Fjalëkalimeve me PBKDF2-SHA1")
@@ -65,5 +91,8 @@ entry_verify.grid(row=4, column=1, padx=10)
 
 btn_verify = tk.Button(root, text="Verifiko", command=verify_password)
 btn_verify.grid(row=4, column=2, padx=(10, 2), pady=10, sticky='w')
+
+btn_clear = tk.Button(root, text="Pastro", command=clear)
+btn_clear.grid(row=3, column=2, padx=(2, 10), pady=10, sticky='e')
 
 root.mainloop()
