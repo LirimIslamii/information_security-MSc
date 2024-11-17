@@ -113,10 +113,10 @@ tk.Label(root, text="Verifiko Fjalëkalimin:").grid(row=4, column=0, padx=10, pa
 entry_verify = tk.Entry(root, show="*", width=35)
 entry_verify.grid(row=4, column=1, padx=10)
 
-btn_verify = tk.Button(root, text="Verifiko", command=verify_password)
+btn_verify = tk.Button(root, text="Verifiko", command=verify_password, fg='green')
 btn_verify.grid(row=4, column=2, padx=(10, 2), pady=10, sticky='w')
 
-btn_clear = tk.Button(root, text="Pastro", command=clear)
+btn_clear = tk.Button(root, text="Pastro", command=clear, fg='red')
 btn_clear.grid(row=4, column=2, padx=(2, 10), pady=10, sticky='e')
 
 root.mainloop()
