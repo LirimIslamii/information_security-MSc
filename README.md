@@ -45,7 +45,7 @@ Për të klonuar projektin, ndiqni këto hapa:
 
 ### Ndërfaqja e Tkinter App
 
-<div align="center">![Ndërfaqja e Tkinter App](gui.png)</div>
+<div align="center">![alt text](gui.png)</div>
 
 ### Kontribuesit
 

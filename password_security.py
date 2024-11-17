@@ -71,7 +71,7 @@ def check_password_strength(event):
         strength = "Mesatar"
         color = "blue"
     if len(password) >= 12 and re.search(r"[A-Z]", password) and re.search(r"[0-9]", password) and re.search(r"[!@#$%^&*(),.?\":{}|<>]", password):
-        strength = "I fortë"
+        strength = "I sigurtë"
         color = "green"
     label_strength.config(text=strength, foreground=color)
 
