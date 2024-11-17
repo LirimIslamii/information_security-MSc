@@ -41,7 +41,9 @@ Për të klonuar projektin, ndiqni këto hapa:
 📂 Navigoni në direktorinë ku dëshironi të ruani projektin. <br>
 📡 Vendosni këtë komandë për të klonuar repositorin: <br>
 
-   ```bash git clone https://github.com/LirimIslamii/information_security-MSc.git ```
+   ```bash git clone https://github.com/LirimIslamii/information_security-MSc.git```
+   ```cd desktop information_security-MSc```
+   ```python password_security.app```
 
 ### Ndërfaqja e Tkinter App
 
