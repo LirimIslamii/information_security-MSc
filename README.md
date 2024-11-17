@@ -1,13 +1,13 @@
 <div align="center">
 
-## UNIVERSITETI I PRISHTINЁS  
-## FAKULTETI I INXHINIERISË ELEKTRIKE DHE KOMPJUTERIKE  
+### UNIVERSITETI I PRISHTINЁS  
+### FAKULTETI I INXHINIERISË ELEKTRIKE DHE KOMPJUTERIKE  
 
 ![alt text](image.png)
 
 ### Tema: Mbrojtja e fjalëkalimeve me PBKDF2-SHA1
 ### Lënda: Siguria e Informacionit
-### Mentor: Prof. Dr. Mërgim Hoti
+<div align="left"><h3>Mentor: Prof. Dr. Mërgim Hoti</h3></div>
 
 </div>
 
@@ -35,15 +35,17 @@ Projekti përdor **Tkinter** për të ofruar një ndërfaqe të thjeshtë dhe t�
 
 ### Si të marrim kodin
 
-Për të marrë një kopje lokale të kodit, ndiqni këto hapa:
+Për të klonuar projektin, ndiqni këto hapa:
 
-🔓 Hapni terminalin tuaj.
-📂 Navigoni në direktorinë ku dëshironi të ruani projektin.
-📡 Vendosni këtë komandë për të klonuar repositorin:
+🔓 Hapni terminalin tuaj. <br>
+📂 Navigoni në direktorinë ku dëshironi të ruani projektin. <br>
+📡 Vendosni këtë komandë për të klonuar repositorin: <br>
 
    ```bash git clone https://github.com/LirimIslamii/information_security-MSc.git ```
 
-![Ndërfaqja e Tkinter App](gui.png)
+### Ndërfaqja e Tkinter App
+
+<div align="center">![Ndërfaqja e Tkinter App](gui.png)</div>
 
 ### Kontribuesit
 
