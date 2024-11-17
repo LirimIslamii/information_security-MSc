@@ -5,9 +5,9 @@
 
 ![alt text](image.png)
 
-## Tema: Mbrojtja e fjalëkalimeve me PBKDF2-SHA1
-## Lënda: Siguria e Informacionit
-## Mentor: Prof. Dr. Mërgim Hoti
+### Tema: Mbrojtja e fjalëkalimeve me PBKDF2-SHA1
+### Lënda: Siguria e Informacionit
+### Mentor: Prof. Dr. Mërgim Hoti
 
 </div>
 
@@ -32,6 +32,18 @@ Projekti përdor **Tkinter** për të ofruar një ndërfaqe të thjeshtë dhe t�
 
 ### Instalimi
 ⚙️ Për të ekzekutuar projektin, sigurohu që të kesh Python të instaluar.
+
+### Si të marrim kodin
+
+Për të marrë një kopje lokale të kodit, ndiqni këto hapa:
+
+🔓 Hapni terminalin tuaj.
+📂 Navigoni në direktorinë ku dëshironi të ruani projektin.
+📡 Vendosni këtë komandë për të klonuar repositorin:
+
+   ```bash git clone https://github.com/LirimIslamii/information_security-MSc.git ```
+
+![Ndërfaqja e Tkinter App](gui.png)
 
 ### Kontribuesit
 
