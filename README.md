@@ -5,7 +5,9 @@
 
 ![alt text](image.png)
 
-## Mbrojtja e fjalëkalimeve me PBKDF2-SHA1
+## Tema: Mbrojtja e fjalëkalimeve me PBKDF2-SHA1
+## Lënda: Siguria e Informacionit
+## Mentor: Prof. Dr. Mërgim Hoti
 
 </div>
 
